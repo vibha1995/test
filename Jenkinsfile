@@ -21,7 +21,7 @@ pipeline {
 
     stage('Deliver') {
       steps{
-        deploy adapters: [tomcat9(credentialsId: 'tomcat', path: '', url: 'http://172.25.192.88:9090/')], contextPath: null, war: 'testing/target/calculator.war'
+        deploy adapters: [tomcat9(credentialsId: 'tomcat', path: '*', url: 'http://172.25.192.88:9090/')], contextPath: null, war: 'target/calculator.war'
      }
     }
     
