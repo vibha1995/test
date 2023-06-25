@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Calculator.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Calculator Program for Intellipaat DevOps Jun-2023 Program</a> &gt; <a href="index.source.html" class="el_package">com.example</a> &gt; <span class="el_source">Calculator.java</span></div><h1>Calculator.java</h1><pre class="source lang-java linenums">
+package com.example;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.net.InetAddress;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+<span class="fc" id="L12">public class Calculator extends HttpServlet {</span>
+
+	private static final long serialVersionUID = 1L;
+
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    {
+        try
+        {
+<span class="fc" id="L20">          response.setContentType(&quot;text/html&quot;);</span>
+<span class="fc" id="L21">          PrintWriter out= response.getWriter();</span>
+
+	//  InetAddress my_address = InetAddress.getLocalHost();
+
+<span class="fc" id="L25">    	  out.println(&quot;&lt;html&gt;&quot;);</span>
+<span class="fc" id="L26">    	  out.println(&quot;&lt;body bgcolor=\&quot;Aqua\&quot;&gt;&quot;);</span>
+<span class="fc" id="L27">    	  out.println(&quot;&lt;h1&gt;Welcome to New DevOps Program&lt;/h1&gt;&quot;);</span>
+        
+<span class="fc" id="L29">    	  int a1= Integer.parseInt(request.getParameter(&quot;n1&quot;));</span>
+<span class="fc" id="L30">          int a2= Integer.parseInt(request.getParameter(&quot;n2&quot;));</span>
+          
+<span class="pc bpc" id="L32" title="1 of 2 branches missed.">          if(request.getParameter(&quot;r1&quot;)!=null)</span>
+          {
+<span class="fc" id="L34">            out.println(&quot;&lt;h1&gt;Addition&lt;/h1&gt;&quot;+ add(a1,a2));</span>
+          }
+<span class="pc bpc" id="L36" title="1 of 2 branches missed.">          if(request.getParameter(&quot;r2&quot;)!=null)</span>
+          {
+<span class="nc" id="L38">            out.println(&quot;&lt;h1&gt;Subtraction&lt;/h1&gt;&quot;+ sub (a1, a2));</span>
+          }
+<span class="pc bpc" id="L40" title="1 of 2 branches missed.">          if(request.getParameter(&quot;r3&quot;)!=null)</span>
+          {
+<span class="nc" id="L42">            out.println(&quot;&lt;h1&gt;Multiplication&lt;/h1&gt;&quot;+ mul (a1, a2));</span>
+          }
+<span class="pc bpc" id="L44" title="1 of 2 branches missed.">          if(request.getParameter(&quot;r4&quot;)!=null)</span>
+          {
+<span class="nc" id="L46">             out.println(&quot;&lt;h1&gt;Division&lt;/h1&gt;&quot;+ div (a1, a2));</span>
+          }
+
+	  /*
+          out.println(&quot;&lt;br&gt;&lt;h2&gt;Serving Container Name: &quot; + my_address.getHostName()+&quot;&lt;/h2&gt;&quot;);
+          out.println(&quot;&lt;br&gt;&lt;h2&gt;Serving Container IP: &quot; + my_address.getHostAddress()+&quot;&lt;/h2&gt;&quot;);
+	  */
+
+<span class="fc" id="L54">          out.println(&quot;&lt;/body&gt;&quot;);</span>
+<span class="fc" id="L55">          out.println(&quot;&lt;/html&gt;&quot;);  </span>
+        }
+        
+<span class="fc" id="L58">        catch(Exception e)</span>
+        {
+<span class="fc" id="L60">            System.out.println(&quot;In  exception&quot;);</span>
+<span class="fc" id="L61">        }</span>
+<span class="fc" id="L62">    }</span>
+        public int add(int a, int b) {
+<span class="fc" id="L64">            return a + b ;</span>
+        }
+        
+	    public int sub(int a, int b) {
+<span class="nc" id="L68">            return a - b;</span>
+        }
+	    
+    	public int mul(int a, int b) {
+<span class="nc" id="L72">            return a * b ;</span>
+        }
+    	
+    	public int div(int a, int b) {
+<span class="fc" id="L76">            return a / b ;</span>
+        }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>
