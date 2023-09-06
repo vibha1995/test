@@ -1,0 +1,14 @@
+<VirtualHost *:80>
+    ServerName your-reverse-proxy-domain.com
+    ServerAlias www.your-reverse-proxy-domain.com
+
+    ProxyPass / http://backend_server_ip:backend_server_port/
+    ProxyPassReverse / http://backend_server_ip:backend_server_port/
+
+    ErrorLog ${APACHE_LOG_DIR}/reverse_proxy_error.log
+    CustomLog ${APACHE_LOG_DIR}/reverse_proxy_access.log combined
+
+    <Location />
+        Require all granted
+    </Location>
+</VirtualHost>
