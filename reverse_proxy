@@ -1,0 +1,40 @@
+LoadModule headers_module modules/mod_headers.so
+LoadModule ssl_module modules/mod_ssl.so
+
+
+
+CustomLog /var/log/httpd/access.log combined
+ErrorLog /var/log/httpd/error.log
+
+<VirtualHost *:80>
+ServerName ---
+LimitRequestFieldSize 16384
+
+<FilesMatch "\.(js|css|woff|woff2|png|jpg)$">
+	Header set Cache-Control "max-age=604800, private"
+</FilesMatch>
+
+<FilesMatch "(?<!\.js|\.css)$">
+	Header set Cache-Control "no-cache, no-store, must-revalidate"
+	Header set Pragma "no-cache"
+	Header set expire 0
+</FilesMatch>
+
+<Proxy *>
+Order deny,allow
+Allow from all
+</Proxy>
+SSLProxyEngine on
+
+<Location /_dashboards/>
+Allow from all
+
+
+	Header set Cache-Control "no-cache, no-store, must-revalidate"
+	Header set Pragma "no-cache"
+	Header set expire 0
+ProxyPass "http://IP/"
+ProxyPassreverse "http://IP/"
+</Location> 
+
+</VirtualHost>
